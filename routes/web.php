@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\GradeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,8 @@ Route::group(['middleware' => ['auth']], function() {
     
     Route::resource('enrollments', EnrollmentController::class);
     Route::resource('courses', CoursesController::class);
+
+    Route::resource('grades', GradeController::class);
+    Route::get('grades/report', [GradeController::class, 'report'])->name('grades.report');
+
 });
