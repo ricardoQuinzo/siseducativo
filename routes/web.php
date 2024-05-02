@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('courses', CoursesController::class);
 
     Route::resource('grades', GradeController::class);
-    Route::get('grades/report', [GradeController::class, 'report'])->name('grades.report');
+    Route::get('grades/reports/view', [GradeController::class, 'report'])->name('grades.report');
 
 
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
