@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 
 class EnrollmentController extends Controller
 {
+
+    function __construct()
+    {
+         $this->middleware('permission:mat-list|mat-create|mat-edit|mat-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:mat-create', ['only' => ['create','store']]);
+         $this->middleware('permission:mat-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:mat-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $enrollments = Enrollment::with(['course', 'student'])->get();

@@ -22,12 +22,21 @@ class CreateAdminUserSeeder extends Seeder
         	'password' => bcrypt('123456')
         ]);
   
-        $role = Role::create(['name' => 'Admin']);
+        $role = Role::create(['name' => 'Administrativo']);
    
         $permissions = Permission::pluck('id','id')->all();
   
         $role->syncPermissions($permissions);
    
         $user->assignRole([$role->id]);
+
+        // Creación del rol de docente
+        $roleDocente = Role::create(['name' => 'Docente']);
+        // Si necesitas asignar permisos específicos puedes hacerlo aquí
+        // $roleDocente->syncPermissions($permisosParaDocentes);
+
+        $roleEstudiante = Role::create(['name' => 'Estudiante']);
+        // Si necesitas asignar permisos específicos puedes hacerlo aquí
+        // $roleEstudiante->syncPermissions($permisosParaEstudiantes);
     }
 }

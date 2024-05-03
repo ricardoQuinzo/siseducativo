@@ -7,12 +7,20 @@
     <form method="POST" action="{{ route('grades.store') }}">
         @csrf
         <div class="mb-3">
-            <label for="student_id" class="form-label">Estudiante ID</label>
-            <input type="number" class="form-control" id="student_id" name="student_id" required>
+            <label for="student_id" class="form-label">Estudiante</label>
+            <select class="form-control" id="student_id" name="student_id" required>
+                @foreach ($est as $student)
+                <option value="{{ $student->id }}">{{ $student->student_name }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
-            <label for="course_id" class="form-label">Curso ID</label>
-            <input type="number" class="form-control" id="course_id" name="course_id" required>
+            <label for="course_id" class="form-label">Curso</label>
+            <select class="form-control" id="course_id" name="course_id" required>
+                @foreach ($courses as $course)
+                <option value="{{ $course->id }}">{{ $course->name }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label for="score" class="form-label">Puntaje</label>

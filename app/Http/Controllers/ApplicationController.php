@@ -11,6 +11,14 @@ use Illuminate\Support\Str;
 
 class ApplicationController extends Controller
 {
+
+    function __construct()
+    {
+         $this->middleware('permission:admisiones-list|admisiones-create|admisiones-edit|admisiones-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:admisiones-create', ['only' => ['create','store']]);
+         $this->middleware('permission:admisiones-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:admisiones-delete', ['only' => ['destroy']]);
+    }
     // lista de admitidos
     public function index()
     {
@@ -41,6 +49,7 @@ class ApplicationController extends Controller
                 'email' => $application->student_email,
                 'password' => Hash::make($tempPassword) // Hashear la contraseña temporal
             ]);
+            $user->assignRole('Estudiante');
 
         }
         return redirect()->route('applications.index');

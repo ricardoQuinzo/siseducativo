@@ -7,6 +7,8 @@ use App\Models\Grade;
 
 class ReportController extends Controller
 {
+
+
     public function index()
     {
         // Obtener las calificaciones del usuario autenticado

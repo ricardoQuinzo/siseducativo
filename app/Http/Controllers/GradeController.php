@@ -10,6 +10,14 @@ use App\Models\Course;
 
 class GradeController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:notas-list|notas-create|notas-edit|notas-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:notas-create', ['only' => ['create','store']]);
+         $this->middleware('permission:notas-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:notas-delete', ['only' => ['destroy']]);
+    } 
+    
     public function index()
     {
         $grades = Grade::with(['student', 'course'])->get();
@@ -18,10 +26,10 @@ class GradeController extends Controller
 
     public function create()
     {
-        $est = Application::all();
-        $course = Course:: all();
-        return view('grades.create', compact('est', 'course'));
-        
+        $est = Application::where('accepted', 1)->get();
+        $courses = Course:: all();
+        return view('grades.create', compact('est', 'courses'));
+
     }
 
     public function store(Request $request)
