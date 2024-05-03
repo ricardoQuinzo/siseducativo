@@ -19,8 +19,6 @@
   <p>{{ $message }}</p>
 </div>
 @endif
-
-
    
     <ul>
         @foreach ($applications as $application)
