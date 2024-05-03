@@ -3,11 +3,11 @@
 
 @section('content')
 <div class="container">
-    <h1>Enroll a Student</h1>
+    <h1>Matricular un Estudante</h1>
     <form method="POST" action="{{ route('enrollments.store') }}">
         @csrf
         <div class="mb-3">
-            <label for="student_id" class="form-label">Student</label>
+            <label for="student_id" class="form-label">Estudiante</label>
             <select class="form-control" id="student_id" name="student_id" required>
                 @foreach ($students as $student)
                 <option value="{{ $student->id }}">{{ $student->student_name }}</option>
@@ -15,7 +15,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="course_id" class="form-label">Course</label>
+            <label for="course_id" class="form-label">Curso</label>
             <select class="form-control" id="course_id" name="course_id" required>
                 @foreach ($courses as $course)
                 <option value="{{ $course->id }}">{{ $course->name }}</option>

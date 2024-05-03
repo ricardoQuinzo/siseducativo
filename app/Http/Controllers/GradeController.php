@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Grade;
+use App\Models\Application;
+use App\Models\Course;
 
 
 class GradeController extends Controller
@@ -16,7 +18,10 @@ class GradeController extends Controller
 
     public function create()
     {
-        return view('grades.create');
+        $est = Application::all();
+        $course = Course:: all();
+        return view('grades.create', compact('est', 'course'));
+        
     }
 
     public function store(Request $request)
