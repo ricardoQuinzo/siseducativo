@@ -8,13 +8,12 @@
                 <h2>Cursos</h2>
             </div>
             <div class="pull-right">
-                @can('product-create')
-                <a class="btn btn-success" href="{{ route('courses.create') }}"> Crear Nuevo Curso</a>
-                @endcan
+                <a class="btn btn-primary" href="{{ route('courses.create') }}"> Crear Nuevo Curso</a>
             </div>
         </div>
     </div>
 
+    <br>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">

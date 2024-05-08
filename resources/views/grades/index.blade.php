@@ -8,7 +8,7 @@
     <ul class="list-group mt-3">
         @foreach ($grades as $grade)
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                Estudiante ID: {{ $grade->student_id }} - Curso ID: {{ $grade->course_id }} - Puntaje: {{ $grade->score }}
+                Estudiante: {{ $grade->student->student_name }} - Curso: {{ $grade->course->name }} - Curso Código: {{ $grade->course->code }} - Puntaje: {{ $grade->score }}
                 <div>
                     <a href="{{ route('grades.edit', $grade) }}" class="btn btn-sm btn-secondary">Editar</a>
                     <form action="{{ route('grades.destroy', $grade) }}" method="POST" style="display:inline;">
@@ -19,6 +19,7 @@
                 </div>
             </li>
         @endforeach
+
     </ul>
 </div>
 @endsection
